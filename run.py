@@ -17,7 +17,7 @@ scores = SHEET.worksheet("scores")
 
 data = scores.get_all_values()
 
-print(data)
+# print(data)
 
 # def run_game():
 #     """
@@ -35,3 +35,44 @@ print(data)
 #         ████▄▄▄██▌╢╣»è⌐╢╣███▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄██▌╣╣»è⌐╢╣███▄███████r
 #        ▀▀▀▀▀▀▀▀▀▀█▓╣▓▓▓╣▓█████████████████████████████████████▓╣▓▓▓╣▓███▀▀` ▀'
 #                  ▀▀███████▀                                 ▀███████▀▀")
+
+
+def game_option():
+    """
+    user input to play game, see rules,see ScoreBored
+    """
+    print("Pick from the following options")
+    print("""  
+    <         PlayQuiz        >
+    <           Rules         >
+    <        ScoreBoard       >\n
+    Enter 'P' to start game, 'R' to read rules, 'S' for ScoreBoard.""")
+
+def player_input_selection():
+    """
+    Checks for player input and validates input is correct
+    """
+    selection = input('P, R, S')
+    try:
+       while True:
+               if selection.upper() in ['P', 'R', 'S']:
+                return selection
+               else:
+                   print("Invalid selection please try again P, R, S")
+                   selection = input('P, R, S')
+
+
+player_input_selection()
+
+# def game_loop():
+#     “”"
+#     runs the main game and takes in data needed for game
+#     “”"
+#     name = get_player_name()
+# def get_player_name():
+#     “”"
+#     gets player name input displays to terminal
+#     shows error message if name too long
+#     “”"
+#     print(“Enter your name: “)
+#     x = input(“”)
