@@ -1,6 +1,8 @@
 import gspread
+import random
 from google.oauth2.service_account import Credentials
 from questions import quiz_questions
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -19,22 +21,13 @@ data = scores.get_all_values()
 
 # print(data)
 
-# def run_game():
-#     """
-#     Game start with welcome message and logo
-#     """
-#     print("Welcome to the Back To The Future Quiz")
-#     print("▒▒h       
-#                                           ,╓╓╓╓╓╓╓╓╓╓╓╓▒▒▒▒╓m$ÖÖQⁿ═w, ,▒▀Ç ,▄█████
-#                                      ,▄╗╢▒▄███████████▌▒▒▒▌▒█▒▒@▒▒▒▒╢╢▒████████░░█▌
-#                                  ▄mÑ▒▄████████████████▌▒▒▒█▒████▓██▓▓▓╬▓▒▒▒▀▀▀████▌
-#                      ,,,╓╓╖╥╖╥R▒▒▒▒███▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▀▒▒▒▒▒░█
-#        ,╓╗@@@╣╢╢▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒[
-#       ╓░░▒▒▒@▒▒▒░█████████░▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▀░█████████░▀▒▒▒▒▒▒▒███
-#      ┌╢▒▒╣█▒@█▒░███▓▓▓▓▓███▌║▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒╢╢╢╢╢╢╜░██▀▓▓▓▓▓███▌║▒▒▒▄████▀
-#         ████▄▄▄██▌╢╣»è⌐╢╣███▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄██▌╣╣»è⌐╢╣███▄███████r
-#        ▀▀▀▀▀▀▀▀▀▀█▓╣▓▓▓╣▓█████████████████████████████████████▓╣▓▓▓╣▓███▀▀` ▀'
-#                  ▀▀███████▀                                 ▀███████▀▀")
+
+def run_game():
+    """
+    Game start with welcome message and logo
+    """
+    print("Welcome to the Back To The Future Quiz")
+    game_option()
 
 
 def game_option():
@@ -42,37 +35,20 @@ def game_option():
     user input to play game, see rules,see ScoreBored
     """
     print("Pick from the following options")
-    print("""  
+    print("""
     <         PlayQuiz        >
     <           Rules         >
     <        ScoreBoard       >\n
     Enter 'P' to start game, 'R' to read rules, 'S' for ScoreBoard.""")
+    player_name_input()
 
-def player_input_selection():
+
+def player_name_input():
     """
-    Checks for player input and validates input is correct
+    gets player name for game
     """
-    selection = input('P, R, S')
-    try:
-       while True:
-               if selection.upper() in ['P', 'R', 'S']:
-                return selection
-               else:
-                   print("Invalid selection please try again P, R, S")
-                   selection = input('P, R, S')
+    name = input('Enter your name: ')
+    print('Welcome ' + name)
 
 
-player_input_selection()
-
-# def game_loop():
-#     “”"
-#     runs the main game and takes in data needed for game
-#     “”"
-#     name = get_player_name()
-# def get_player_name():
-#     “”"
-#     gets player name input displays to terminal
-#     shows error message if name too long
-#     “”"
-#     print(“Enter your name: “)
-#     x = input(“”)
+run_game()
