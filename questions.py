@@ -1,13 +1,13 @@
 quiz_questions = [
     {
         "question": "What make is the car in which Marty Mcfly \
-             uses too travel back in time?:",
+            uses too travel back in time?:",
         "answers": ["B.M.W", "DMC Delorian", "Ford"],
         "correct": "DMC Delorian"
     },
     {
-        "question": "According to Doctor Emmit Brown what makes \
-             time travel possible?:",
+        "question": "According to Doctor Emmit Brown what \
+        makes time travel possible?:",
         "answers": ["The rotation of the earth ",
                     "Newtons law of motion",
                     "The flux capacitor"],

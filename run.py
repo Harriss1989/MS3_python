@@ -64,14 +64,15 @@ def run_game():
     # start_game()
 
 
-# def start_game():
-#     """
-#     Adds random question 
-#     """
-#     questions_length = len(quiz_questions)
-#     random_question = random.shuffle(questions_length) 
-#     return random_question
-#     print(random_question)
+def start_game():
+    """
+    Adds random question
+    """
+    for key in quiz_questions:
+        print("")
+        print(key)
+        for i in "question"[quiz_questions - 1]:
+            print(i)
 
 
 
