@@ -16,7 +16,6 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("BTTF_Quiz")
 
 
-
 def run_game():
     """
     Game welcome message, store user name and return input.
@@ -30,18 +29,28 @@ def run_game():
     there will be 3 answers to choose from a, b or c
     let's start.
     """)
-    name = input("Enter your name time traveller: ")
+    name = input("Enter your name time traveller: \n")
     name = name.capitalize()
     name = name.strip()
     while len(name) == 0:
         print(" ")
         print("Great Scott! Time traveller, we didn't catch your name")
         print(" ")
-        name = input("Enter your name time traveller: ")
+        name = input("Enter your name time traveller: \n")
         name = name.capitalize()
         name = name.strip()
-        print("Time traveller " + name + " Good luck, lets begin!")
+        print("Time traveller " + name + " Good luck, lets begin!\n")
     rounds_wanted(name)
+
+
+def score_bored():
+    bored_ten = SHEET.worksheet("10")
+
+    columns = []
+    for ind in range(1, 5):
+        column = 10.col_values(ind)
+        columns.append(column[-5:])
+    print(columns)
 
 
 def rounds_wanted(name):
@@ -52,7 +61,7 @@ def rounds_wanted(name):
     player_round_pick = 0
     while True:
         try:
-            rounds = input("Pick your amount of questions 10, 15 or 20: ")
+            rounds = input("Pick your amount of questions 10, 15 or 20: \n")
             if rounds not in ["10", "15", "20"]:
                 raise Exception
             else:
@@ -108,7 +117,6 @@ def start_game(rounds_wanted, name):
     score = 0
     i = 0
     while i < questions_wanted:
-        attempts = 1
         print(questions_list[i]["question"])
         print(f"a,{questions_list[i]['answers'][0]}")
         print(f"b,{questions_list[i]['answers'][1]}")
@@ -131,7 +139,6 @@ def end_game(score, questions_wanted, name):
     scored with an option to play again,
     updates google sheet with player name and score for score bored
     """
-    print("started end game function")
     if questions_wanted == 10:
         sheet_ten = SHEET.worksheet("10")
         sheet_ten.append_row([name, score])
@@ -139,11 +146,53 @@ def end_game(score, questions_wanted, name):
     elif questions_wanted == 15:
         sheet_fifteen = SHEET.worksheet("15")
         sheet_fifteen.append_row([name, score])
-        # get score sheet 15 and update wuth name and score
+        # get score sheet 15 and update with name and score
     else:
-        # get score sheet 20 and update wuth name and score
+        # get score sheet 20 and update with name and score
         sheet_twenty = SHEET.worksheet("20")
         sheet_twenty.append_row([name, score])
+    print(f'Congratulations {name} you scored {score}\n')
+    play_again(name)
+
+
+def play_again(name):
+    """
+    give the player the option to play again
+    """
+    print(f'Would you like yo play again? {name}\n')
+    print('type y for yes or n for no\n')
+    while True:
+        try:
+            user_answer = input("Enter Answer: ")
+            user_answer = user_answer.lower()
+            if user_answer not in ["y", "n"]:
+                raise Exception
+            else:
+                break
+        except Exception:
+            print("Your answer must be either y, n")
+            print("no dots, dashes, spaces or numbers. Try again")
+    if user_answer == "y":
+        restart_game(name)
+    else:
+        exit_game(name)
+
+
+def restart_game(name):
+    """
+    Restart's game and give player ption to change question amount
+    """
+    print(f"{name} why not try a different amount of questions.\n")
+    rounds_wanted(name)
+
+
+def exit_game(name):
+    """
+    Ends game prints goodbye message
+    """
+    print(f"\n Thank you for playing {name}")
+    print("to play again press the big orange button.\n")
+    print("\n Goodbye Timetravlers")
 
 
 run_game()
