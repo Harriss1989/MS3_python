@@ -1,5 +1,6 @@
 import random
 import gspread
+import os
 from google.oauth2.service_account import Credentials
 from questions import quiz_questions
 
@@ -15,6 +16,16 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("BTTF_Quiz")
 
+
+def clear_screen():
+    """
+    clears Screen prior to new content.
+    Original code from 
+    http://www.coding4you.at/inf_tag/beginners_python_cheat_sheet.pdf
+    Recommended to me by Matt Bodden
+    https://github.com/MattBCoding
+    """
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def run_game():
     """
@@ -43,15 +54,7 @@ def run_game():
     rounds_wanted(name)
 
 
-def score_bored():
-    bored_ten = SHEET.worksheet("10")
-
-    columns = []
-    for ind in range(1, 5):
-        column = 10.col_values(ind)
-        columns.append(column[-5:])
-    print(columns)
-
+# def score_bored():
 
 def rounds_wanted(name):
     """
@@ -117,6 +120,7 @@ def start_game(rounds_wanted, name):
     score = 0
     i = 0
     while i < questions_wanted:
+        clear_screen()
         print(questions_list[i]["question"])
         print(f"a,{questions_list[i]['answers'][0]}")
         print(f"b,{questions_list[i]['answers'][1]}")
@@ -151,6 +155,7 @@ def end_game(score, questions_wanted, name):
         # get score sheet 20 and update with name and score
         sheet_twenty = SHEET.worksheet("20")
         sheet_twenty.append_row([name, score])
+    clear_screen()
     print(f'Congratulations {name} you scored {score}\n')
     play_again(name)
 
