@@ -24,7 +24,7 @@ data = scores.get_all_values()
 
 def run_game():
     """
-    Game welcome message, store user name and return input
+    Game welcome message, store user name and return input.
     """
     print("""
     Welcome to the Back To The Future Quiz. This quiz is for fans
@@ -32,8 +32,8 @@ def run_game():
     Test your knowledge to see if you are a true fan with this fun quiz.
     You can pick from 10, 15 or 20 questions.
     Questions will be mutiple choice,
-    there will be 3 answers to choose from A, B or C
-    let's start
+    there will be 3 answers to choose from a, b or c
+    let's start.
     """)
     name = input("Enter your name time traveller: ")
     name = name.capitalize()
@@ -46,10 +46,31 @@ def run_game():
         name = name.capitalize()
         name = name.strip()
         print("Time traveller " + name + " Good luck, lets begin!")
-    start_game()
+    rounds_wanted()
+
+
+def rounds_wanted():
+    """
+    Gets player input and selects how many questions are asked for game'
+    will give a message if wronge input is entered
+    """
+    try:
+        rounds = input("Pick your amount of questions 10, 15 or 20: ")
+        if rounds not in ["10", "20", "30"]:
+            raise Exception
+        else:
+            player_round_pick = int(rounds)
+            start_game(player_round_pick)
+    except Exception:
+        print("Your answer must be either 10, 15 or 20")
+        print("no dots, dashes, spaces or letters. Try again")
+        
 
 
 def get_correct_answer(current_question):
+    """
+    Gets current question and checks for correct answer.
+    """
     if current_question["correct"] == current_question["answers"][0]:
         return 'a'
     elif current_question["correct"] == current_question["answers"][1]:
@@ -59,6 +80,10 @@ def get_correct_answer(current_question):
 
 
 def get_player_answer():
+    """
+    Takes in player input and checks whether answer is correct,
+    also gives message if player does not input correctly.
+    """
     while True:
         try:
             user_answer = input("Enter Answer: ")
@@ -72,11 +97,11 @@ def get_player_answer():
             print("no dots, dashes, spaces or numbers. Try again")
 
 
-def start_game():
+def start_game(rounds_wanted):
     """
     Adds random question
     """
-    questions_wanted = 10
+    questions_wanted = rounds_wanted
     questions_list = []
     while len(questions_list) < questions_wanted:
         x = random.randint(0, (len(quiz_questions)-1))
