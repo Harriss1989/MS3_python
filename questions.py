@@ -138,7 +138,7 @@ quiz_questions = [
         "correct": "Jennifer"
     },
     {
-        "qusetion": "what is marty's dads motto once he"
+        "question": "what is marty's dads motto once he"
         "returns back from the past?:",
         "answers": ["With great power comes great responsabilty",
                     "You put your mind to it you can accomplish anything",

@@ -15,11 +15,6 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("BTTF_Quiz")
 
-scores = SHEET.worksheet("scores")
-
-data = scores.get_all_values()
-
-# print(data)
 
 
 def run_game():
@@ -46,25 +41,28 @@ def run_game():
         name = name.capitalize()
         name = name.strip()
         print("Time traveller " + name + " Good luck, lets begin!")
-    rounds_wanted()
+    rounds_wanted(name)
 
 
-def rounds_wanted():
+def rounds_wanted(name):
     """
     Gets player input and selects how many questions are asked for game'
     will give a message if wronge input is entered
     """
-    try:
-        rounds = input("Pick your amount of questions 10, 15 or 20: ")
-        if rounds not in ["10", "20", "30"]:
-            raise Exception
-        else:
-            player_round_pick = int(rounds)
-            start_game(player_round_pick)
-    except Exception:
-        print("Your answer must be either 10, 15 or 20")
-        print("no dots, dashes, spaces or letters. Try again")
-        
+    player_round_pick = 0
+    while True:
+        try:
+            rounds = input("Pick your amount of questions 10, 15 or 20: ")
+            if rounds not in ["10", "15", "20"]:
+                raise Exception
+            else:
+                player_round_pick = int(rounds)
+                break
+        except Exception:
+            print("Your answer must be either 10, 15 or 20")
+            print("no dots, dashes, spaces or letters. Try again")
+
+    start_game(player_round_pick, name)
 
 
 def get_correct_answer(current_question):
@@ -97,7 +95,7 @@ def get_player_answer():
             print("no dots, dashes, spaces or numbers. Try again")
 
 
-def start_game(rounds_wanted):
+def start_game(rounds_wanted, name):
     """
     Adds random question
     """
@@ -124,6 +122,28 @@ def start_game(rounds_wanted):
         # when deleting the line below remember to print blank lines
         print(f'your score is {score}\n\n')
 
+    end_game(score, questions_wanted, name)
+
+
+def end_game(score, questions_wanted, name):
+    """
+    Get player score and displays depending on rounds picked how much they
+    scored with an option to play again,
+    updates google sheet with player name and score for score bored
+    """
+    print("started end game function")
+    if questions_wanted == 10:
+        sheet_ten = SHEET.worksheet("10")
+        sheet_ten.append_row([name, score])
+        # get score sheet 10 and update with name and score
+    elif questions_wanted == 15:
+        sheet_fifteen = SHEET.worksheet("15")
+        sheet_fifteen.append_row([name, score])
+        # get score sheet 15 and update wuth name and score
+    else:
+        # get score sheet 20 and update wuth name and score
+        sheet_twenty = SHEET.worksheet("20")
+        sheet_twenty.append_row([name, score])
 
 
 run_game()
