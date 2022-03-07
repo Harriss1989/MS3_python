@@ -45,43 +45,60 @@ def run_game():
         name = input("Enter your name time traveller: ")
         name = name.capitalize()
         name = name.strip()
-    else:
         print("Time traveller " + name + " Good luck, lets begin!")
     start_game()
 
 
-# def game_option():
-#     """
-#     user input to play game, see rules,see ScoreBored
-#     """
-#     print("Pick from the following options")
-#     print("""
-#     <         PlayQuiz        >
-#     <           Rules         >
-#     <        ScoreBoard       >\n
-#     Enter 'P' to play game, 'R' to read rules, 'S' for ScoreBoard.""")
-    # player_name_input()
-    # start_game()
+def get_correct_answer(current_question):
+    if current_question["correct"] == current_question["answers"][0]:
+        return 'a'
+    elif current_question["correct"] == current_question["answers"][1]:
+        return 'b'
+    elif current_question["correct"] == current_question["answers"][2]:
+        return 'c'
+
+
+def get_player_answer():
+    while True:
+        try:
+            user_answer = input("Enter Answer: ")
+            user_answer = user_answer.lower()
+            if user_answer not in ["a", "b", "c"]:
+                raise Exception
+            else:
+                return user_answer
+        except Exception:
+            print("Your answer must be either a, b or c")
+            print("no dots, dashes, spaces or numbers. Try again")
 
 
 def start_game():
     """
     Adds random question
     """
-    for key in quiz_questions:
-        print("")
-        print(key)
-        for i in "question"[quiz_questions - 1]:
-            print(i)
+    questions_wanted = 10
+    questions_list = []
+    while len(questions_list) < questions_wanted:
+        x = random.randint(0, (len(quiz_questions)-1))
+        questions_list.append(quiz_questions[x])
+        quiz_questions.pop(x)
+    score = 0
+    i = 0
+    while i < questions_wanted:
+        attempts = 1
+        print(questions_list[i]["question"])
+        print(f"a,{questions_list[i]['answers'][0]}")
+        print(f"b,{questions_list[i]['answers'][1]}")
+        print(f"c,{questions_list[i]['answers'][2]}")
+        correct_answer = get_correct_answer(questions_list[i])
 
+        answer = get_player_answer()
+        if answer == correct_answer:
+            score += 1
+        i += 1
+        # when deleting the line below remember to print blank lines
+        print(f'your score is {score}\n\n')
 
-
-# def player_name_input():
-#     """
-#     gets player name for game
-#     """
-#     name = input('Enter your name: ')
-#     print('Welcome ' + name)
 
 
 run_game()
