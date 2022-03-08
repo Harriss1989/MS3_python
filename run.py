@@ -1,6 +1,8 @@
 import random
 import gspread
 import os
+import time
+import sys
 from google.oauth2.service_account import Credentials
 from questions import quiz_questions
 
@@ -17,19 +19,31 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("BTTF_Quiz")
 
 
+class C:
+    """
+    Class to hold color variables
+    """
+    RESET = '\33[0m'
+    RED = '\33[91m'
+    GOLD = '\33[93m'
+    SILVER = '\33[237m'
+    BRONZE = '\33[216m'
+
+
 def clear_screen():
     """
     clears Screen prior to new content.
-    Original code from 
+    Original code from
     http://www.coding4you.at/inf_tag/beginners_python_cheat_sheet.pdf
     Recommended to me by Matt Bodden
     https://github.com/MattBCoding
     """
     os.system('cls' if os.name == 'nt' else 'clear')
 
+
 def run_game():
     """
-    Game welcome message, store user name and return input.
+    Game welcome message calls main menu function
     """
     print("""
     Welcome to the Back To The Future Quiz. This quiz is for fans
@@ -38,8 +52,38 @@ def run_game():
     You can pick from 10, 15 or 20 questions.
     Questions will be mutiple choice,
     there will be 3 answers to choose from a, b or c
-    let's start.
+    let's start.\n
     """)
+    main_menu()
+    
+
+def main_menu():
+    """
+    Give player two options to choose from start game or to view leaderbored
+    """
+    print("1- start game")
+    print("2- leaderbored")
+    while True:
+        try:
+            pick_one = input("please select an option 1 or 2:\n")
+            if pick_one not in ["1", "2"]:
+                raise Exception
+            else:
+                break
+        except Exception:
+            print("Your answer must be either 1 or 2:")
+            print("no dots, dashes, spaces or letters. Try again")
+
+    if pick_one == "1":
+        get_name()
+    elif pick_one == "2":
+        score_bored()
+
+
+def get_name():
+    """
+    store user name and return input.
+    """
     name = input("Enter your name time traveller: \n")
     name = name.capitalize()
     name = name.strip()
@@ -54,7 +98,48 @@ def run_game():
     rounds_wanted(name)
 
 
-# def score_bored():
+def score_bored():
+    """
+    Gets the value of scores from worksheets and displays
+    leaderbored to player
+    """
+    worksheet_ten = SHEET.worksheet("10").get_all_values()
+    sorted_ten = []
+    for sub_list in worksheet_ten:
+        sub_list[1] = int(sub_list[1])
+        sorted_ten.append(sub_list)
+    worksheet_ten = sorted(sorted_ten, key=lambda x: x[1], reverse=True)
+
+    worksheet_fifteen = SHEET.worksheet("15").get_all_values()
+    sorted_fifteen = []
+    for sub_list in worksheet_fifteen:
+        sub_list[1] = int(sub_list[1])
+        sorted_fifteen.append(sub_list)
+    worksheet_fifteen = sorted(sorted_fifteen,
+                               key=lambda x: x[1], reverse=True)
+
+    worksheet_twenty = SHEET.worksheet("20").get_all_values()
+    sorted_twenty = []
+    for sub_list in worksheet_twenty:
+        sub_list[1] = int(sub_list[1])
+        sorted_twenty.append(sub_list)
+    worksheet_twenty = sorted(sorted_twenty, key=lambda x: x[1], reverse=True)
+
+    print("leaderbored")
+    print("10 rounds")
+    print(f'{C.GOLD}1st{C.RESET}-{worksheet_ten[0][0]} with{C.RED}{worksheet_ten[0][1]}{C.RESET}pts')
+    print(f'{C.SILVER}2nd{C.RESET}- {worksheet_ten[1][0]} with{C.RED}{worksheet_ten[1][1]}{C.RESET}pts')
+    print(f'{C.BRONZE}3rd{C.RESET}- {worksheet_ten[2][0]} with{C.RED}{worksheet_ten[2][1]}{C.RESET}pts')
+    print("15 rounds")
+    print(f'{C.GOLD}1st{C.RESET}-{worksheet_fifteen[0][0]} with {C.RED}{worksheet_fifteen[0][1]}{C.RESET}pts')
+    print(f'{C.SILVER}2nd{C.RESET}-{worksheet_fifteen[1][0]} with {C.RED}{worksheet_fifteen[1][1]}{C.RESET}pts')
+    print(f'{C.BRONZE}3rd{C.RESET}-{worksheet_fifteen[2][0]} with{C.RED}{worksheet_fifteen[2][1]}{C.RESET}pts')
+    print("20 rounds")
+    print(f'{C.GOLD}1st{C.RESET} - {worksheet_twenty[0][0]} with {C.RED}{worksheet_twenty[0][1]}{C.RESET}pts')
+    print(f'{C.SILVER}2nd{C.RESET} - {worksheet_twenty[1][0]} with {C.RED}{worksheet_twenty[1][1]}{C.RESET}pts')
+    print(f'{C.BRONZE}3rd{C.RESET} - {worksheet_twenty[2][0]} with {C.RED}{worksheet_twenty[2][1]}{C.RESET}pts\n')
+    main_menu()
+
 
 def rounds_wanted(name):
     """
@@ -69,6 +154,7 @@ def rounds_wanted(name):
                 raise Exception
             else:
                 player_round_pick = int(rounds)
+                clear_screen()
                 break
         except Exception:
             print("Your answer must be either 10, 15 or 20")
@@ -120,20 +206,21 @@ def start_game(rounds_wanted, name):
     score = 0
     i = 0
     while i < questions_wanted:
-        clear_screen()
         print(questions_list[i]["question"])
         print(f"a,{questions_list[i]['answers'][0]}")
         print(f"b,{questions_list[i]['answers'][1]}")
         print(f"c,{questions_list[i]['answers'][2]}")
         correct_answer = get_correct_answer(questions_list[i])
-
         answer = get_player_answer()
         if answer == correct_answer:
             score += 1
+            print('Correct good job')
+        else:
+            print('That is incorrect on to the next Question')
         i += 1
-        # when deleting the line below remember to print blank lines
         print(f'your score is {score}\n\n')
-
+        time.sleep(2)
+        clear_screen()
     end_game(score, questions_wanted, name)
 
 
@@ -197,7 +284,7 @@ def exit_game(name):
     """
     print(f"\n Thank you for playing {name}")
     print("to play again press the big orange button.\n")
-    print("\n Goodbye Timetravlers")
+    print("\n Goodbye Timetravler")
 
 
 run_game()
