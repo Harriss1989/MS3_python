@@ -2,7 +2,6 @@ import random
 import gspread
 import os
 import time
-import sys
 from google.oauth2.service_account import Credentials
 from questions import quiz_questions
 
@@ -26,7 +25,7 @@ class C:
     RESET = '\33[0m'
     RED = '\33[91m'
     GOLD = '\33[93m'
-    SILVER = '\33[237m'
+    SILVER = '\33[59m'
     BRONZE = '\33[216m'
 
 
@@ -54,8 +53,32 @@ def run_game():
     there will be 3 answers to choose from a, b or c
     let's start.\n
     """)
-    main_menu()
+    print('\33[1m 1 \33[0m')
+    print('\33[2m gray \33[0m')
+    print('\33[3m italic \33[0m')
+    print('\33[4m underline \33[0m')
+    print('\33[7m white bacground \33[0m')
+    print('\33[8m black \33[0m')
+    print('\33[9m strike thro \33[0m')
+    print('\33[30m dark black \33[0m')
+    print('\33[31m red \33[0m')
+    print('\33[32m green\33[0m')
+    print('\33[33m yellow \33[0m')
+    print('\33[34m blue \33[0m')
+    print('\33[35m cyan \33[0m')
+    print('\33[36m aqya blue \33[0m')
+    print('\33[37m bright white \33[0m')
+    print('\33[40m black bg \33[0m')
+    print('\33[41m red bg \33[0m')
+    print('\33[42m green bg \33[0m')
+    print('\33[43m yellow bg \33[0m')
+    print('\33[44m blue bg \33[0m')
+    print('\33[45m cyan bg \33[0m')
+    print('\33[46m aqua bg \33[0m')
+    print('\33[47m white bg \33[0m')
     
+    main_menu()
+
 
 def main_menu():
     """
@@ -128,16 +151,16 @@ def score_bored():
     print("leaderbored")
     print("10 rounds")
     print(f'{C.GOLD}1st{C.RESET}-{worksheet_ten[0][0]} with{C.RED}{worksheet_ten[0][1]}{C.RESET}pts')
-    print(f'{C.SILVER}2nd{C.RESET}- {worksheet_ten[1][0]} with{C.RED}{worksheet_ten[1][1]}{C.RESET}pts')
-    print(f'{C.BRONZE}3rd{C.RESET}- {worksheet_ten[2][0]} with{C.RED}{worksheet_ten[2][1]}{C.RESET}pts')
+    print(f'{C.SILVER}2nd{C.RESET}-{worksheet_ten[1][0]} with{C.RED}{worksheet_ten[1][1]}{C.RESET}pts')
+    print(f'{C.BRONZE}3rd{C.RESET}-{worksheet_ten[2][0]} with{C.RED}{worksheet_ten[2][1]}{C.RESET}pts')
     print("15 rounds")
     print(f'{C.GOLD}1st{C.RESET}-{worksheet_fifteen[0][0]} with {C.RED}{worksheet_fifteen[0][1]}{C.RESET}pts')
     print(f'{C.SILVER}2nd{C.RESET}-{worksheet_fifteen[1][0]} with {C.RED}{worksheet_fifteen[1][1]}{C.RESET}pts')
     print(f'{C.BRONZE}3rd{C.RESET}-{worksheet_fifteen[2][0]} with{C.RED}{worksheet_fifteen[2][1]}{C.RESET}pts')
     print("20 rounds")
-    print(f'{C.GOLD}1st{C.RESET} - {worksheet_twenty[0][0]} with {C.RED}{worksheet_twenty[0][1]}{C.RESET}pts')
-    print(f'{C.SILVER}2nd{C.RESET} - {worksheet_twenty[1][0]} with {C.RED}{worksheet_twenty[1][1]}{C.RESET}pts')
-    print(f'{C.BRONZE}3rd{C.RESET} - {worksheet_twenty[2][0]} with {C.RED}{worksheet_twenty[2][1]}{C.RESET}pts\n')
+    print(f'{C.GOLD}1st{C.RESET}-{worksheet_twenty[0][0]} with {C.RED}{worksheet_twenty[0][1]}{C.RESET}pts')
+    print(f'{C.SILVER}2nd{C.RESET}-{worksheet_twenty[1][0]} with {C.RED}{worksheet_twenty[1][1]}{C.RESET}pts')
+    print(f'{C.BRONZE}3rd{C.RESET}-{worksheet_twenty[2][0]} with {C.RED}{worksheet_twenty[2][1]}{C.RESET}pts\n')
     main_menu()
 
 
