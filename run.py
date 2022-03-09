@@ -1,6 +1,6 @@
 import random
-import gspread
 import os
+import gspread
 import time
 from google.oauth2.service_account import Credentials
 from questions import quiz_questions
@@ -23,10 +23,11 @@ class C:
     Class to hold color variables
     """
     RESET = '\33[0m'
-    RED = '\33[91m'
+    RED = '\33[31m'
     GOLD = '\33[93m'
-    SILVER = '\33[59m'
-    BRONZE = '\33[216m'
+    SILVER = '\33[2m'
+    GREEN = '\33[32m'
+    BLUE = '\33[34m'
 
 
 def clear_screen():
@@ -53,30 +54,6 @@ def run_game():
     there will be 3 answers to choose from a, b or c
     let's start.\n
     """)
-    print('\33[1m 1 \33[0m')
-    print('\33[2m gray \33[0m')
-    print('\33[3m italic \33[0m')
-    print('\33[4m underline \33[0m')
-    print('\33[7m white bacground \33[0m')
-    print('\33[8m black \33[0m')
-    print('\33[9m strike thro \33[0m')
-    print('\33[30m dark black \33[0m')
-    print('\33[31m red \33[0m')
-    print('\33[32m green\33[0m')
-    print('\33[33m yellow \33[0m')
-    print('\33[34m blue \33[0m')
-    print('\33[35m cyan \33[0m')
-    print('\33[36m aqya blue \33[0m')
-    print('\33[37m bright white \33[0m')
-    print('\33[40m black bg \33[0m')
-    print('\33[41m red bg \33[0m')
-    print('\33[42m green bg \33[0m')
-    print('\33[43m yellow bg \33[0m')
-    print('\33[44m blue bg \33[0m')
-    print('\33[45m cyan bg \33[0m')
-    print('\33[46m aqua bg \33[0m')
-    print('\33[47m white bg \33[0m')
-    
     main_menu()
 
 
@@ -84,8 +61,8 @@ def main_menu():
     """
     Give player two options to choose from start game or to view leaderbored
     """
-    print("1- start game")
-    print("2- leaderbored")
+    print("1- Start Game\n")
+    print("2- Leaderbored\n")
     while True:
         try:
             pick_one = input("please select an option 1 or 2:\n")
@@ -107,18 +84,16 @@ def get_name():
     """
     store user name and return input.
     """
-    name = input("Enter your name time traveller: \n")
-    name = name.capitalize()
-    name = name.strip()
-    while len(name) == 0:
-        print(" ")
-        print("Great Scott! Time traveller, we didn't catch your name")
-        print(" ")
-        name = input("Enter your name time traveller: \n")
-        name = name.capitalize()
-        name = name.strip()
-        print("Time traveller " + name + " Good luck, lets begin!\n")
-    rounds_wanted(name)
+    try:
+        while True:
+            name = str(input("Enter your name time traveller: \n"))
+            if len(name) <= 10 and name.isalpha():
+                print("Time traveller " + name + " Good luck, lets begin!\n")
+                rounds_wanted(name)
+            else:
+                print("Great Scott! Time traveller, we didn't catch your name")
+    except Exception:
+        clear_screen()
 
 
 def score_bored():
@@ -148,19 +123,19 @@ def score_bored():
         sorted_twenty.append(sub_list)
     worksheet_twenty = sorted(sorted_twenty, key=lambda x: x[1], reverse=True)
 
-    print("leaderbored")
-    print("10 rounds")
-    print(f'{C.GOLD}1st{C.RESET}-{worksheet_ten[0][0]} with{C.RED}{worksheet_ten[0][1]}{C.RESET}pts')
-    print(f'{C.SILVER}2nd{C.RESET}-{worksheet_ten[1][0]} with{C.RED}{worksheet_ten[1][1]}{C.RESET}pts')
-    print(f'{C.BRONZE}3rd{C.RESET}-{worksheet_ten[2][0]} with{C.RED}{worksheet_ten[2][1]}{C.RESET}pts')
-    print("15 rounds")
-    print(f'{C.GOLD}1st{C.RESET}-{worksheet_fifteen[0][0]} with {C.RED}{worksheet_fifteen[0][1]}{C.RESET}pts')
-    print(f'{C.SILVER}2nd{C.RESET}-{worksheet_fifteen[1][0]} with {C.RED}{worksheet_fifteen[1][1]}{C.RESET}pts')
-    print(f'{C.BRONZE}3rd{C.RESET}-{worksheet_fifteen[2][0]} with{C.RED}{worksheet_fifteen[2][1]}{C.RESET}pts')
-    print("20 rounds")
-    print(f'{C.GOLD}1st{C.RESET}-{worksheet_twenty[0][0]} with {C.RED}{worksheet_twenty[0][1]}{C.RESET}pts')
-    print(f'{C.SILVER}2nd{C.RESET}-{worksheet_twenty[1][0]} with {C.RED}{worksheet_twenty[1][1]}{C.RESET}pts')
-    print(f'{C.BRONZE}3rd{C.RESET}-{worksheet_twenty[2][0]} with {C.RED}{worksheet_twenty[2][1]}{C.RESET}pts\n')
+    print(f"{C.BLUE}Leaderbored{C.RESET}\n")
+    print("10 rounds\n")
+    print(f'{C.GOLD}1st{C.RESET} - {worksheet_ten[0][0]} with {C.BLUE}{worksheet_ten[0][1]}{C.RESET} pts')
+    print(f'{C.SILVER}2nd{C.RESET} - {worksheet_ten[1][0]} with {C.BLUE}{worksheet_ten[1][1]}{C.RESET} pts')
+    print(f'{C.RED}3rd{C.RESET} - {worksheet_ten[2][0]} with {C.BLUE}{worksheet_ten[2][1]}{C.RESET} pts\n')
+    print("15 rounds\n")
+    print(f'{C.GOLD}1st {C.RESET} - {worksheet_fifteen[0][0]} with {C.BLUE}{worksheet_fifteen[0][1]}{C.RESET} pts')
+    print(f'{C.SILVER}2nd {C.RESET} - {worksheet_fifteen[1][0]} with {C.BLUE}{worksheet_fifteen[1][1]}{C.RESET} pts')
+    print(f'{C.RED}3rd {C.RESET} - {worksheet_fifteen[2][0]} with {C.BLUE}{worksheet_fifteen[2][1]}{C.RESET} pts\n')
+    print("20 rounds\n")
+    print(f'{C.GOLD}1st {C.RESET} - {worksheet_twenty[0][0]} with {C.BLUE}{worksheet_twenty[0][1]}{C.RESET} pts')
+    print(f'{C.SILVER}2nd {C.RESET} - {worksheet_twenty[1][0]} with {C.BLUE}{worksheet_twenty[1][1]}{C.RESET} pts')
+    print(f'{C.RED}3rd {C.RESET} - {worksheet_twenty[2][0]} with {C.BLUE}{worksheet_twenty[2][1]}{C.RESET} pts\n')
     main_menu()
 
 
@@ -218,7 +193,8 @@ def get_player_answer():
 
 def start_game(rounds_wanted, name):
     """
-    Adds random question
+    Adds random question to game , updates player scor and tells them
+    if question is right or wrong.
     """
     questions_wanted = rounds_wanted
     questions_list = []
@@ -230,18 +206,18 @@ def start_game(rounds_wanted, name):
     i = 0
     while i < questions_wanted:
         print(questions_list[i]["question"])
-        print(f"a,{questions_list[i]['answers'][0]}")
-        print(f"b,{questions_list[i]['answers'][1]}")
-        print(f"c,{questions_list[i]['answers'][2]}")
+        print(f"a) {questions_list[i]['answers'][0]}\n")
+        print(f"b) {questions_list[i]['answers'][1]}\n")
+        print(f"c) {questions_list[i]['answers'][2]}\n\n")
         correct_answer = get_correct_answer(questions_list[i])
         answer = get_player_answer()
         if answer == correct_answer:
             score += 1
-            print('Correct good job')
+            print(f'{C.GREEN}Correct{C.RESET} good job\n')
         else:
-            print('That is incorrect on to the next Question')
+            print(f'That is {C.RED}Incorrect{C.RESET} on to the next Question')
         i += 1
-        print(f'your score is {score}\n\n')
+        print(f'Your score is {C.GOLD}{score}{C.RESET}\n\n')
         time.sleep(2)
         clear_screen()
     end_game(score, questions_wanted, name)
@@ -251,7 +227,7 @@ def end_game(score, questions_wanted, name):
     """
     Get player score and displays depending on rounds picked how much they
     scored with an option to play again,
-    updates google sheet with player name and score for score bored
+    updates google sheet with player name and score for leaderbored
     """
     if questions_wanted == 10:
         sheet_ten = SHEET.worksheet("10")
@@ -272,10 +248,10 @@ def end_game(score, questions_wanted, name):
 
 def play_again(name):
     """
-    give the player the option to play again
+    Gives the player the option to play again
     """
     print(f'Would you like yo play again? {name}\n')
-    print('type y for yes or n for no\n')
+    print('Type y for yes or n for no\n')
     while True:
         try:
             user_answer = input("Enter Answer: ")
@@ -286,7 +262,7 @@ def play_again(name):
                 break
         except Exception:
             print("Your answer must be either y, n")
-            print("no dots, dashes, spaces or numbers. Try again")
+            print("No dots, dashes, spaces or numbers. Try again")
     if user_answer == "y":
         restart_game(name)
     else:
@@ -295,9 +271,9 @@ def play_again(name):
 
 def restart_game(name):
     """
-    Restart's game and give player ption to change question amount
+    Restart's game and give player option to change question amount
     """
-    print(f"{name} why not try a different amount of questions.\n")
+    print(f"{name} Why not try a different amount of questions.\n")
     rounds_wanted(name)
 
 
@@ -306,8 +282,8 @@ def exit_game(name):
     Ends game prints goodbye message
     """
     print(f"\n Thank you for playing {name}")
-    print("to play again press the big orange button.\n")
-    print("\n Goodbye Timetravler")
+    print("To play again press the big orange button.\n")
+    print("\n Goodbye Time Traveler")
 
 
 run_game()
