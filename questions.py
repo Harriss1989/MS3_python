@@ -37,10 +37,10 @@ quiz_questions = [
     {
         "question": "What is the name of the mail Marty meets\n"
         "Doctor Emmit Brown called?\n\n",
-        "answers": ["twin pine mall",
-                    "lonley pine mall",
-                    "westfilds"],
-        "correct": "twin pine mall"
+        "answers": ["Twin Pine Mall",
+                    "Lonley Pine Mall",
+                    "Westfilds"],
+        "correct": "Twin Pine Mall"
     },
     {
         "question": "At what time does the lightning strike the\n"

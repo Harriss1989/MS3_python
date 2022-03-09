@@ -128,7 +128,7 @@ def score_bored():
         sorted_twenty.append(sub_list)
     worksheet_twenty = sorted(sorted_twenty, key=lambda x: x[1], reverse=True)
 
-    print(f"{C.BLUE}Leaderbored{C.RESET}\n")
+    print(f"{C.BLUE}Leaderboard{C.RESET}\n")
     print("10 rounds")
     print(f'{C.GOLD}1st{C.RESET} - {worksheet_ten[0][0]} with \
 {C.BLUE}{worksheet_ten[0][1]}{C.RESET} pts')
