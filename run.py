@@ -12,6 +12,7 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
+# Accesses the excel sheet itself
 CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
@@ -32,7 +33,7 @@ class C:
 
 def clear_screen():
     """
-    clears Screen prior to new content.
+    Clears Screen prior to new content.
     Original code from
     http://www.coding4you.at/inf_tag/beginners_python_cheat_sheet.pdf
     Recommended to me by Matt Bodden
@@ -43,7 +44,7 @@ def clear_screen():
 
 def run_game():
     """
-    Game welcome message calls main menu function
+    Game welcome message calls main menu function.
     """
     print("""
     Welcome to the Back To The Future Quiz. This quiz is for fans
@@ -59,10 +60,10 @@ def run_game():
 
 def main_menu():
     """
-    Give player two options to choose from start game or to view leaderbored
+    Give player two options to choose from, start game or view leaderboard
     """
     print("1- Start Game\n")
-    print("2- Leaderbored\n")
+    print("2- Leaderboard\n")
     while True:
         try:
             pick_one = input("please select an option 1 or 2:\n")
@@ -72,39 +73,39 @@ def main_menu():
                 break
         except Exception:
             print("Your answer must be either 1 or 2:")
-            print("no dots, dashes, spaces or letters. Try again")
+            print("No dots, dashes, spaces or letters. Try again!")
 
     if pick_one == "1":
         get_name()
     elif pick_one == "2":
-        score_bored()
+        score_board()
 
 
 def get_name():
     """
-    store user name and return input.
+    Store user name and check for only letters no other characters.
     """
     try:
         while True:
-            name = input("Enter your name time traveller: \n")
+            name = input("Enter your name Time Traveller: \n")
             name = name.capitalize()
             name = name.strip()
             if len(name) <= 15 and name.isalpha():
-                print("Time traveller " + name + " Good luck, lets begin!\n")
+                print("Time Traveller " + name + " Good luck, lets begin!\n")
                 break
             else:
                 print("Great Scott! Time traveller, we didn't catch your name")
-                print("no dots, dashes, spaces or numbers. Try again")
+                print("No dots, dashes, spaces or numbers. Try again!")
     except Exception:
         clear_screen()
 
     rounds_wanted(name)
 
 
-def score_bored():
+def score_board():
     """
     Gets the value of scores from worksheets and displays
-    leaderbored to player
+    leaderboard to player
     """
     worksheet_ten = SHEET.worksheet("10").get_all_values()
     sorted_ten = []
