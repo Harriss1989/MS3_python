@@ -262,9 +262,9 @@ def end_game(score, questions_wanted, name):
         sheet_fifteen.append_row([name, score])
         # get score sheet 15 and update with name and score
     else:
-        # get score sheet 20 and update with name and score
         sheet_twenty = SHEET.worksheet("20")
         sheet_twenty.append_row([name, score])
+        # get score sheet 20 and update with name and score
     clear_screen()
     print(f'Congratulations {name} you scored {score}\n')
     play_again(name)
