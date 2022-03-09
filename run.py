@@ -86,14 +86,19 @@ def get_name():
     """
     try:
         while True:
-            name = str(input("Enter your name time traveller: \n"))
-            if len(name) <= 10 and name.isalpha():
+            name = input("Enter your name time traveller: \n")
+            name = name.capitalize()
+            name = name.strip()
+            if len(name) <= 15 and name.isalpha():
                 print("Time traveller " + name + " Good luck, lets begin!\n")
-                rounds_wanted(name)
+                break
             else:
                 print("Great Scott! Time traveller, we didn't catch your name")
+                print("no dots, dashes, spaces or numbers. Try again")
     except Exception:
         clear_screen()
+
+    rounds_wanted(name)
 
 
 def score_bored():
@@ -124,18 +129,27 @@ def score_bored():
     worksheet_twenty = sorted(sorted_twenty, key=lambda x: x[1], reverse=True)
 
     print(f"{C.BLUE}Leaderbored{C.RESET}\n")
-    print("10 rounds\n")
-    print(f'{C.GOLD}1st{C.RESET} - {worksheet_ten[0][0]} with {C.BLUE}{worksheet_ten[0][1]}{C.RESET} pts')
-    print(f'{C.SILVER}2nd{C.RESET} - {worksheet_ten[1][0]} with {C.BLUE}{worksheet_ten[1][1]}{C.RESET} pts')
-    print(f'{C.RED}3rd{C.RESET} - {worksheet_ten[2][0]} with {C.BLUE}{worksheet_ten[2][1]}{C.RESET} pts\n')
-    print("15 rounds\n")
-    print(f'{C.GOLD}1st {C.RESET} - {worksheet_fifteen[0][0]} with {C.BLUE}{worksheet_fifteen[0][1]}{C.RESET} pts')
-    print(f'{C.SILVER}2nd {C.RESET} - {worksheet_fifteen[1][0]} with {C.BLUE}{worksheet_fifteen[1][1]}{C.RESET} pts')
-    print(f'{C.RED}3rd {C.RESET} - {worksheet_fifteen[2][0]} with {C.BLUE}{worksheet_fifteen[2][1]}{C.RESET} pts\n')
-    print("20 rounds\n")
-    print(f'{C.GOLD}1st {C.RESET} - {worksheet_twenty[0][0]} with {C.BLUE}{worksheet_twenty[0][1]}{C.RESET} pts')
-    print(f'{C.SILVER}2nd {C.RESET} - {worksheet_twenty[1][0]} with {C.BLUE}{worksheet_twenty[1][1]}{C.RESET} pts')
-    print(f'{C.RED}3rd {C.RESET} - {worksheet_twenty[2][0]} with {C.BLUE}{worksheet_twenty[2][1]}{C.RESET} pts\n')
+    print("10 rounds")
+    print(f'{C.GOLD}1st{C.RESET} - {worksheet_ten[0][0]} with \
+{C.BLUE}{worksheet_ten[0][1]}{C.RESET} pts')
+    print(f'{C.SILVER}2nd{C.RESET} - {worksheet_ten[1][0]} with \
+{C.BLUE}{worksheet_ten[1][1]}{C.RESET} pts')
+    print(f'{C.RED}3rd{C.RESET} - {worksheet_ten[2][0]} with \
+{C.BLUE}{worksheet_ten[2][1]}{C.RESET} pts\n')
+    print("15 rounds")
+    print(f'{C.GOLD}1st {C.RESET} - {worksheet_fifteen[0][0]} with \
+{C.BLUE}{worksheet_fifteen[0][1]}{C.RESET} pts')
+    print(f'{C.SILVER}2nd {C.RESET} - {worksheet_fifteen[1][0]} with \
+{C.BLUE}{worksheet_fifteen[1][1]}{C.RESET} pts')
+    print(f'{C.RED}3rd {C.RESET} - {worksheet_fifteen[2][0]} with \
+{C.BLUE}{worksheet_fifteen[2][1]}{C.RESET} pts\n')
+    print("20 rounds")
+    print(f'{C.GOLD}1st {C.RESET} - {worksheet_twenty[0][0]} with \
+{C.BLUE}{worksheet_twenty[0][1]}{C.RESET} pts')
+    print(f'{C.SILVER}2nd {C.RESET} - {worksheet_twenty[1][0]} with \
+{C.BLUE}{worksheet_twenty[1][1]}{C.RESET} pts')
+    print(f'{C.RED}3rd {C.RESET} - {worksheet_twenty[2][0]} with \
+{C.BLUE}{worksheet_twenty[2][1]}{C.RESET} pts\n')
     main_menu()
 
 
@@ -250,7 +264,7 @@ def play_again(name):
     """
     Gives the player the option to play again
     """
-    print(f'Would you like yo play again? {name}\n')
+    print(f'Would you like you play again {name}?\n')
     print('Type y for yes or n for no\n')
     while True:
         try:
