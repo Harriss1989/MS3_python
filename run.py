@@ -297,7 +297,7 @@ def exit_game(name):
     Ends game prints goodbye message
     """
     print(f"\n Thank you for playing {name}")
-    print("To play again press the big orange button.\n")
+    print("To play again press the big blue button.\n")
     print("\n Goodbye Time Traveler")
 
 
