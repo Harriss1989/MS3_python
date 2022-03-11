@@ -36,12 +36,21 @@ User Story:
 
 Acceptance Criteria:
 
-* it should be clear to the user that this is a quiz, what the quiz is about, and how to play with the option to pick how many questions asked.
+* It should be clear to the user that this is a quiz, what the quiz is about, and how to play with the option to pick how many questions asked.
 
 Implementation:
 
 * The layout, as this is a terminal based game the use of colour within the game and a background image will be designed to immerse the user in to the film triva quiz. Implamenting a scence of fun throught the interactions with the game. The welcome message, at the start of the game will give the user clear instrutions on what they are playing and how to play, with clear prompts to the user and validation for each user input.
 
 User story: 
-> As a us er
+> As a user, I want to be able to check my score and to see where i rank in a leaderboard. 
 
+Acceptance Criteria:
+
+* The user should have the option to check a leaderboard to see where they placed in the top three depending on amount of questions asked.
+* The users score will be captured in a seperate spread sheet, along with there name and if lucky enought to score within the top three have there name and score desplayed to the terminal with there ranking position.
+
+I used lucid charts to help me visualise the projects functionallity throught the development process. This help me a geate deal in planning the logic behind the game and how each input the user put in would checked. 
+
+![Game_flow]()
+![Inputted_data]()
