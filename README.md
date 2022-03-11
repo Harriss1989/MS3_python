@@ -52,7 +52,7 @@ Acceptance Criteria:
 I used lucid charts to help me visualise the projects functionallity through out the development process. This helped me a great deal in planning the logic behind the game and how each input the user put in would be checked. 
 
 ![Game_flow]()
-![Inputted_data]()
+![Inputed_data]()
 
 # The Skeleton Plane
 ## Wireframe mock-ups
