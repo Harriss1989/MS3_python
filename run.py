@@ -52,7 +52,8 @@ def run_game():
     Test your knowledge to see if you are a true fan with this fun quiz.
     You can pick from 10, 15 or 20 questions.
     Questions will be mutiple choice,
-    there will be 3 answers to choose from a, b or c
+    there will be 3 answers to choose from a, b or c.
+    Will you score enought pionts to be featured on the leaderboard?
     let's start.\n
     """)
     main_menu()
