@@ -4,7 +4,7 @@ Back to the Future Quiz (MS3_python) is a browser-based game built in Python. It
 
 This game utilises the Code Institute Python template, as it was developed in Python for use in the terminal. This makes it available within a web browser.
 
-![Game image]()
+![Game image](/assets/images/main.png)
 
 [Link to live site](https://back-to-the-future-quiz.herokuapp.com/) If you would like to open this document in a new browser tab, please press CTRL + Click.
 
@@ -156,7 +156,7 @@ I was informed of a method to clear the terminal by another student on the cours
 ### stack Overflow
 I used stack overflow to help my understanding of pulling information from a dictionary and various other small functionalities that I needed reminding of.
 
-# Acknowledgements
+# Acknowledgement
 
 I would like to thank the following:
 
