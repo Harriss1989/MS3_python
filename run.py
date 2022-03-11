@@ -214,10 +214,11 @@ def start_game(rounds_wanted, name):
     """
     questions_wanted = rounds_wanted
     questions_list = []
+    quiz_questions_list = quiz_questions.copy()
     while len(questions_list) < questions_wanted:
-        x = random.randint(0, (len(quiz_questions)-1))
-        questions_list.append(quiz_questions[x])
-        quiz_questions.pop(x)
+        x = random.randint(0, (len(quiz_questions_list)-1))
+        questions_list.append(quiz_questions_list[x])
+        quiz_questions_list.pop(x)
     score = 0
     i = 0
     while i < questions_wanted:
