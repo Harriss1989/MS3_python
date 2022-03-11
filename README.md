@@ -69,7 +69,7 @@ After creating my quiz I found a suitable image from the Back to the Future movi
 I added a class to hold colour varibles to implement into my project, I got the idea from a helpful member of the slack community who guided me to this website so 
 I could implemet colour into my Python project. I used the green colour to indicate a correct answer, I used red to indicate an incorrect answer and yellow to display the points gained within the game. I also used the colours on my leaderboard for better visual effect.
 
-![Link](https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
+[Link](https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
 
 # Features
 ## Welcome Screen
@@ -121,4 +121,46 @@ The random library was imported to access a number of the built in methods of ge
 I also added in the GSpread function which allowed me to link the API for google sheets into the file so I could successfully create a leaderboard that would change on every player's input.
 
 # Deployment 
-The site was deployed via Heroku, and the live link can be found here - ![link to page]()
+The site was deployed via Heroku, and the live link can be found here - [link to page]()
+
+The project was developed utilising a Code Institute provided template.
+
+## Project Deployment
+To deploy the project through Heroku I followed these steps:
+
+Sign up / Log in to [Link to Heroku]()
+* From the main Heroku Dashboard page select 'New' and then 'Create New App'
+* * Give the project a name - I entered back-to-the-future-quiz and select a suitable region, then select create app. The name for the app must be unique.
+* This will create the app within Heroku and bring you to the deploy tab. From the submenu at the top, navigate to the settings tab.
+* This next step is required for creating the app when using the CI Python Deployment Template. If you created your own program without using the CI Template, you might not need to add a config var.
+* In the config vars section select the reveal config vars button. This will display the current config vars for the app, there should be nothing already there.
+* In the KEY input field input PORT all in capitals, then in the VALUE field input 8000 and select the Add button to the right.
+Next select the add buildpack button below the config vars section.
+* In the pop-up window select Python as your first build pack and select save changes.
+* Then repeat the steps to add a node.js buildpack.
+* The order of the buildpacks is important, in the list Python should be first with Node.js second. If they are not in this order, you can click and drag them to rearrange.
+* Next navigate back to the deploy tab using the submenu at the top of the page.
+* In the deployment method section select the GitHub - Connect to GitHub button and follow the steps prompted if any to connect your GitHub account
+* In the Connect to GitHub section that appears, select the correct account, and enter the name of the repository and select search.
+* Once Heroku has located the repo select connect.
+* This will connect the repo to the app within Heroku. Below the Apps Connected to Heroku section will be the Automatic Deploys section.
+* In this section, confirm the correct branch of the repo is selected in the drop-down box, and then click the Enable Automatic Deploys button
+* This will ensure whenever you change something in the repo and push the changes to GitHub, Heroku will rebuild the app. If you prefer to do this manually you can utilise the manual deployment options further down. For this project I utilised the Automatic Deployment to enable me to check changes I made to the app as I developed it.
+* Heroku will now build the app for you. Once it has completed the build process you will see a 'Your App Was Successfully Deployed' message and a link to the app to visit the live site.
+
+# Credits
+## Code
+I was informed of a method to clear the terminal by another student on the course Matt Bodden who had foud the method in a Python cheat sheet provided by [coding4you](http://www.coding4you.at/inf_tag/beginners_python_cheat_sheet.pdf).
+
+## Content
+### stack Overflow
+I used stack overflow to help my understanding of pulling information from a dictionary and various other small functionalities that I needed reminding of.
+
+# Acknowledgements
+
+I would like to thank the following:
+
+* Matt Bodden for always being there to talk through any issues that arise, also helping me with the functions and processes nedded for my code to run smoothly.
+He is a great support on the slack community group.
+
+
