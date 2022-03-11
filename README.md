@@ -19,8 +19,12 @@ This game utilises the Code Institute Python template, as it was developed in Py
 
 ## User Stories
 * As a user I want to play a fun game about one of my favourite movies.
-* As a user i want to be able to select the number of questions I can play.
+* As a user I want to be able to select the number of questions I can play.
 * As a user I want to be able to view and compare the scores of the top 3 ranking players.
 
 ## The Scope Plane
-##
+## Features planned:
+
+* As there are certain resrictions in the scope of the development fof the application, such as the termimal confines and methods of deployment.It will be important to ensure all functionality is contained within the game terminal screen.
+* Dispite the confines of the terminal window, the site should be visually stimulating with a graphic/image behind it and clear to the user that it is a quiz.
+* Question amount options should be avalible to the user 10, 15, and 20 giving the game a scene of longevity. 
