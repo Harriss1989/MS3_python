@@ -91,6 +91,34 @@ Once a player has entered 1 they will be asked to enter their name, this will sh
 
 # Quiz Questions
 I used a seperate file, Questions.py, to import from. This contains the 20 quiz questions and all the optional answers, including the correct answer for each question.
-Once a question is generated the player will have the option to select from a group of multiple choice answers, with only one being correct. Once the player has seleted their option which is going to be either a) b) or c), the fuction then checks and validated the answer to make sure it is correct. The player will then see a visual score which will indicate whether they got a question right as if they did it will add a point to their score, if answered incorrectly they will not gain a point and the next random question will be generated.
+Once a question is generated the player will have the option to select from a group of multiple choice answers, with only one being correct. Once the player has seleted their option which is going to be either a) b) or c), the fuction then checks and validated the answer to make sure it is correct. The player will then see a visual score which will indicate whether they got a question right as if they did it will add a point to their score, if answered incorrectly they will not gain a point and the next random question will be generated. If the player does not input the correct letter they will again be presented with an error message and given the option to try again.
 
 ![Question Example]()
+
+# Game End
+Once the player has answerd their selected amount of questions, their name and score will be updated to the google spread sheet and if they make the top 3 their data will be displayed in the leaderboard. The player will now be congratulated with their score and given the option to press 'n' to end the game, if the 'n' option is selected the game thanks the player and indicates how to reset the game. The player is also given the option press 'y' to play again, the player will then be given the option to change the amount of questions they would like to play.
+
+# Future Enhancements
+In the future, I would add more questions to the questions file as although it generates the questions randomly there are currently only 20 questions.
+
+## testing 
+bugs found - repete game question game list bug - had to create a copy of the list so that questions could be reused how found what it ment random number 0 length of up to numbers 
+
+# Libraries Utilised
+## Built-in Python Libraries
+I used several of the built in Python libraries to enable additional functionality within the application math.
+
+## Time
+The time library was also imported to utilize the time.sleep functionality. This enabled me to incorporate specific time delays within the program which adds to the player experience by simulating the time between the player answering their points going up or their correct/wrong message before the next question is displayed.
+
+## OS
+The os library was imported to utilize the os.system and os.name functionality. This enabled me to add functionality to the terminal emulator which allowed me to clear the previous print statements. This provides a clearer and more structured experience for the user.
+
+## Random
+The random library was imported to access a number of the built in methods of generating a random question.
+
+## GSpread
+I also added in the GSpread function which allowed me to link the API for google sheets into the file so I could successfully create a leaderboard that would change on every player's input.
+
+# Deployment 
+The site was deployed via Heroku, and the live link can be found here - ![link to page]()
