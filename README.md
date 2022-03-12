@@ -118,7 +118,17 @@ During the testing process of all the diffrent inputs, I check that each input t
 
 ![Game bug Image Bottom](/assets/images/end_game_bug_bottom.png)
 
-To fix this issue I created another veriable inside the "start_game" function called "quiz_questions_list" and assined it quiz_question.copy(). This then generated a copy of the questions used in the game. In an ideal world i would of had more questions but eventualy the same issue would of arrised, doing it this way im reusing questions that have already been asked to satisfy the requirments needed 
+To fix this issue I created another veriable inside the "start_game" function called "quiz_questions_list" and assined it quiz_question.copy(). This then generated a copy of the questions used in the game. In an ideal world i would of had more questions but eventualy the same issue would of arrised, doing it this way im reusing questions that have already been asked to satisfy the requirments needed.
+
+## Validator Testing
+
+pep8online.com - I utilized pep8online.com to validate my python code. All the python files where checked with only one error in my questions.py no new line at end of file I added a new line and ran the test again with no other errors.
+
+![Vaidator Error](/assets/images/code_validator_error.png)
+
+![Vaidator No Error](/assets/images/code_validated_no_error.png)
+
+![Vaidator Run.py](/assets/images/validator_run.py.png)
 
 # Libraries Utilised
 ## Built-in Python Libraries
