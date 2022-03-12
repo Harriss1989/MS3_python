@@ -21,7 +21,7 @@ SHEET = GSPREAD_CLIENT.open("BTTF_Quiz")
 
 class C:
     """
-    Class to hold color variables
+    Class to hold color variables.
     """
     RESET = '\33[0m'
     RED = '\33[31m'

@@ -51,8 +51,8 @@ Acceptance Criteria:
 # Logical flow
 I used lucid charts to help me visualise the projects functionallity through out the development process. This helped me a great deal in planning the logic behind the game and how each input the user put in would be checked. 
 
-![Game_flow]()
-![Inputed_data]()
+![Game_flow](/assets/images/gameflow.png)
+![Game_flow_two](/assets/images/gameflowtwo.png)
 
 # The Skeleton Plane
 ## Wireframe mock-ups
@@ -67,7 +67,9 @@ After creating my quiz I found a suitable image from the Back to the Future movi
 
 ## Class C
 I added a class to hold colour varibles to implement into my project, I got the idea from a helpful member of the slack community who guided me to this website so 
-I could implemet colour into my Python project. I used the green colour to indicate a correct answer, I used red to indicate an incorrect answer and yellow to display the points gained within the game. I also used the colours on my leaderboard for better visual effect.
+I could implemet colour into my Python project. I used the green colour to indicate a correct answer, I used red to indicate an incorrect answer and yellow to display the points gained within the game. I also used the colours on my leaderboard for better visual effect. In the run.py there is a warning for the Class "C" which states "Class name "C" doesn't conform to PascalCase naming style". I wanted to keep the veribale name small as my leaderboard was getting errors for the line being to long and for eiser readabilaty. 
+
+![Color class c](/assets/images/color_c_class.png)
 
 [Link](https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
 
@@ -75,34 +77,48 @@ I could implemet colour into my Python project. I used the green colour to indic
 ## Welcome Screen
 At the start of the game the user is greeted with a message, welcoming them to the quiz and asking them what options they would like to do depending on if they want to play the game, or view the leaderboard. Players have clear instructions of how to proceed with these options.
 
-![Welcome Screen]()
+![Welcome Screen](/assets/images/welcome_message.png)
 
 ## Leaderboard
 If the user selects the option 2, it will print to the terminal the top 3 winning names and scores. I have added a colour feature within the scores so that the 1st 2nd and 3rd are easily visable to the player, also the amount of points they scored is lit up in blue for better readability. 
 
-![Leaderboard Screen]()
+![Leaderboard Screen](/assets/images/leaderboard.png)
 
 ## Start Game Screen
 Once a player has entered 1 they will be asked to enter their name, this will show an error message if they don't enter alphabetical characters. Once they have entered their name the game will ask how many questions they would like to answer, again if they do not enter numerical digits they will recieve an error message and be asked again. After these inital steps have been taken the game will then start and generate a random set of questions.
 
-![Player Name Input]()
-![Round Input]()
-![Example Error Screen]()
+![Player Name Input](/assets/images/enter_name.png)
+
+![Round Input](/assets/images/question_amount.png)
+
+![Example Error Screen](/assets/images/enter_quetion_answer_error.png)
 
 # Quiz Questions
 I used a seperate file, Questions.py, to import from. This contains the 20 quiz questions and all the optional answers, including the correct answer for each question.
 Once a question is generated the player will have the option to select from a group of multiple choice answers, with only one being correct. Once the player has seleted their option which is going to be either a) b) or c), the fuction then checks and validated the answer to make sure it is correct. The player will then see a visual score which will indicate whether they got a question right as if they did it will add a point to their score, if answered incorrectly they will not gain a point and the next random question will be generated. If the player does not input the correct letter they will again be presented with an error message and given the option to try again.
 
-![Question Example]()
+![Question Example](/assets/images/question.png)
 
 # Game End
 Once the player has answerd their selected amount of questions, their name and score will be updated to the google spread sheet and if they make the top 3 their data will be displayed in the leaderboard. The player will now be congratulated with their score and given the option to press 'n' to end the game, if the 'n' option is selected the game thanks the player and indicates how to reset the game. The player is also given the option press 'y' to play again, the player will then be given the option to change the amount of questions they would like to play.
 
+![End Game message](/assets/images/end_game_message.png)
+
+![End Game message no selection](/assets/images/end_game_no_selection.png)
+
+![End Game message yes selection](/assets/images/end_game_yes_selection.png)
+
 # Future Enhancements
 In the future, I would add more questions to the questions file as although it generates the questions randomly there are currently only 20 questions.
 
-## testing 
-bugs found - repete game question game list bug - had to create a copy of the list so that questions could be reused how found what it ment random number 0 length of up to numbers 
+## Testing 
+During the testing process of all the diffrent inputs, I check that each input took the user to the correct part of the game and each wrong input displayed the correct error message. I came across a bug after finishing the game. The player is asked if they would like to play again and asked how many question they would like, if the player had chose 10 questions for 1st round and then tryed to pick any other amount above 10 the game broke and displayed a ValueError message. This is because there was not enough question to satisfy the requirment.
+
+![Game Bug Image](/assets/images/end_game_bug.png)
+
+![Game bug Image Bottom](/assets/images/end_game_bug_bottom.png)
+
+To fix this issue I created another veriable inside the "start_game" function called "quiz_questions_list" and assined it quiz_question.copy(). This then generated a copy of the questions used in the game. In an ideal world i would of had more questions but eventualy the same issue would of arrised, doing it this way im reusing questions that have already been asked to satisfy the requirments needed 
 
 # Libraries Utilised
 ## Built-in Python Libraries
@@ -121,14 +137,14 @@ The random library was imported to access a number of the built in methods of ge
 I also added in the GSpread function which allowed me to link the API for google sheets into the file so I could successfully create a leaderboard that would change on every player's input.
 
 # Deployment 
-The site was deployed via Heroku, and the live link can be found here - [link to page]()
+The site was deployed via Heroku, and the live link can be found here - [link to page](https://back-to-the-future-quiz.herokuapp.com/)
 
 The project was developed utilising a Code Institute provided template.
 
 ## Project Deployment
 To deploy the project through Heroku I followed these steps:
 
-Sign up / Log in to [Link to Heroku]()
+Sign up / Log in to [Link to Heroku](https://dashboard.heroku.com/apps)
 * From the main Heroku Dashboard page select 'New' and then 'Create New App'
 * * Give the project a name - I entered back-to-the-future-quiz and select a suitable region, then select create app. The name for the app must be unique.
 * This will create the app within Heroku and bring you to the deploy tab. From the submenu at the top, navigate to the settings tab.
@@ -148,9 +164,10 @@ Next select the add buildpack button below the config vars section.
 * This will ensure whenever you change something in the repo and push the changes to GitHub, Heroku will rebuild the app. If you prefer to do this manually you can utilise the manual deployment options further down. For this project I utilised the Automatic Deployment to enable me to check changes I made to the app as I developed it.
 * Heroku will now build the app for you. Once it has completed the build process you will see a 'Your App Was Successfully Deployed' message and a link to the app to visit the live site.
 
+
 # Credits
 ## Code
-I was informed of a method to clear the terminal by another student on the course Matt Bodden who had foud the method in a Python cheat sheet provided by [coding4you](http://www.coding4you.at/inf_tag/beginners_python_cheat_sheet.pdf).
+I was informed of a method to clear the terminal by another student on the course Matt Bodden who had found the method in a Python cheat sheet provided by [coding4you](http://www.coding4you.at/inf_tag/beginners_python_cheat_sheet.pdf).
 
 ## Content
 ### stack Overflow
