@@ -51,7 +51,7 @@ Acceptance Criteria:
 # Logical flow
 I used lucid charts to help me visualise the projects functionality throughout the development process. This helped me a great deal in planning the logic behind the game and how each input the user put in would be checked. 
 
-![Game flow](/assets/images/game_flow.png)
+![Game_flow](/assets/images/game_flow.png)
 ![Game_flow_two](/assets/images/game_flow_two.png)
 
 # The Skeleton Plane
