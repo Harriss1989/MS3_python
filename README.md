@@ -71,7 +71,7 @@ I could implement colour into my Python project. I used the green colour to indi
 
 ![Colour class c](/assets/images/color_c_class.png)
 
-[Link](https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
+[Link to website to add colors to Python](https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
 
 # Features
 ## Welcome Screen
@@ -112,17 +112,17 @@ Once the player has answered their selected number of questions, their name and 
 In the future, I would add more questions to the questions file as although it generates the questions randomly there are currently only 20 questions.
 
 ## Testing 
-During the testing process of all the different inputs, I check that each input took the user to the correct part of the game and each wrong input displayed the correct error message. I came across a bug after finishing the game. The player is asked if they would like to play again and asked how many questions they would like, if the player had chosen 10 questions for 1st round and then tried to pick any other amount above 10 the game broke and displayed a Value Error message. This is because there was not enough question to satisfy the requirement.
+During the testing process of all the different inputs, I checked that each input took the user to the correct part of the game and each wrong input displayed the correct error message. I came across a bug after finishing the game. The player is asked if they would like to play again and asked how many questions they would like, if the player had chosen 10 questions for 1st round and then tried to pick any other amount above 10 the game broke and displayed a Value Error message. This is because there was not enough question to satisfy the requirement.
 
 ![Game Bug Image](/assets/images/end_game_bug.png)
 
 ![Game bug Image Bottom](/assets/images/end_game_bug_bottom.png)
 
-To fix this issue I created another variable inside the "start game" function called "quiz_questions_list" and assigned it quiz_question.copy(). This then generated a copy of the questions used in the game. In an ideal world I would of had more questions but eventually the same issue would of arise, doing it this way I’m reusing questions that have already been asked to satisfy the requirements needed.
+To fix this issue I created another variable inside the "start game" function called "quiz_questions_list" and assigned it quiz_question.copy(). This then generated a copy of the questions used in the game. In an ideal world I would of had more questions but eventually the same issue would have arose, doing it this way I’m reusing questions that have already been asked to satisfy the requirements needed.
 
 ## Validator Testing
 
-pep8online.com - I utilized pep8online.com to validate my python code. All the python files were checked with only one error in my questions.py no new line at end of file I added a new line and ran the test again with no other errors.
+pep8online.com - I utilized pep8online.com to validate my python code. All the python files were checked with only one error in my questions.py, the error stated that there was no newline at end of file. I added a newline and ran the test again with no other errors.
 
 ![Validator Error](/assets/images/code_validator_error.png)
 
